@@ -64,7 +64,7 @@ class SG_Color {
     this.hsvTorgb(this.h, this.s, this.v);
   }
   UpdateHSV() {
-   this.rgbTohsv(this.r, this.g, this.b); 
+    this.rgbTohsv(this.r, this.g, this.b);
   }
   RGB() {
     return `rgb(${this.r}, ${this.g}, ${this.b})`
@@ -93,10 +93,10 @@ class SG_Color {
     //subtract 120, add 120 depending?
     //return the values
     //do similar thing to other color class
-    
+
   }
-  
-  SquareColors(r, g, b){
+
+  SquareColors(r, g, b) {
     rgbTohsv(r, g, b);
     var c1 = SG_Color(r, g, b);
     var c2 = SG_Color(r, g, b);
@@ -112,84 +112,86 @@ class SG_Color {
     c3.h = c3.h % 360;
     c3.UpdateRGB();
 
-    return[c1, c2, c3];
+    return [c1, c2, c3];
   }
 
   MonoColors(r, g, b) {
 
   }
 
-  
+
   rgbTohsv(r, g, b) {
-  var r_p = r/255;
-  var g_p = g/255;
-  var b_p = b/255;
+    var r_p = r / 255;
+    var g_p = g / 255;
+    var b_p = b / 255;
 
-  var max = Math.max(r_p,g_p,b_p);
-  var min = Math.min(r_p,g_p,b_p);
-  var diff = max - min;
+    var max = Math.max(r_p, g_p, b_p);
+    var min = Math.min(r_p, g_p, b_p);
+    var diff = max - min;
 
-  var h = -1;
-  var s = -1;
-  var v = (max*100);//v: final value
+    var h = -1;
+    var s = -1;
+    var v = (max * 100);//v: final value
 
-  if(diff == 0)
-    h = 0;
-  else if(max == r_p)
-    h = (60 * ((g_p - b_p) / diff) + 360) % 360;
-  else if(max == g_p)
-    h = (60 * ((b_p - r_p) / diff) + 120) % 360;
-  else if(max == b_p)
-    h = (60 * ((r_p - g_p) / diff) + 240) % 360; //h: final value depends on what if statement
+    if (diff == 0)
+      h = 0;
+    else if (max == r_p)
+      h = (60 * ((g_p - b_p) / diff) + 360) % 360;
+    else if (max == g_p)
+      h = (60 * ((b_p - r_p) / diff) + 120) % 360;
+    else if (max == b_p)
+      h = (60 * ((r_p - g_p) / diff) + 240) % 360; //h: final value depends on what if statement
 
-  if(max == 0)
-    s = 0;
-  else
-    s = ((diff / max) * 100); //s: final value depends if max == 0
-  
-  this.h = h;
-  this.s = s;
-  this.v = v;
-  //return[h, s, v];
+    if (max == 0)
+      s = 0;
+    else
+      s = ((diff / max) * 100); //s: final value depends if max == 0
+
+    this.h = h;
+    this.s = s;
+    this.v = v;
+    //return[h, s, v];
   }
 
-  hsvTorgb(h, s, v) { 
-  v /= 100;
-  s /= 100;
-  
-  var c = v * s;
-  var h_p = h / 60;
-  var x = c * (1 - Math.abs((h_p) % 2 - 1));
+  hsvTorgb(h, s, v) {
+    v /= 100;
+    s /= 100;
 
-  var r, g, b;
-  
-  if (h_p >= 0 && h_p < 1) { r = c; g = x; b = 0}
-  if (h_p >= 1 && h_p < 2) { r = x; g = c; b = 0}
-  if (h_p >= 2 && h_p < 3) { r = 0; g = c; b = x}
-  if (h_p >= 3 && h_p < 4) { r = 0; g = x; b = c}
-  if (h_p >= 4 && h_p < 5) { r = x; g = 0; b = c}
-  if (h_p >= 5 && h_p < 6) { r = c; g = 0; b = x}
-  
-  var m = v - c;
-  r = (r + m) * 255;
-  g = (g + m) * 255;
-  b = (b + m) * 255;
+    var c = v * s;
+    var h_p = h / 60;
+    var x = c * (1 - Math.abs((h_p) % 2 - 1));
 
-  this.r = r;
-  this.g = g;
-  this.b = b;
-  //return [r, g, b]
+    var r, g, b;
+
+    if (h_p >= 0 && h_p < 1) { r = c; g = x; b = 0 }
+    if (h_p >= 1 && h_p < 2) { r = x; g = c; b = 0 }
+    if (h_p >= 2 && h_p < 3) { r = 0; g = c; b = x }
+    if (h_p >= 3 && h_p < 4) { r = 0; g = x; b = c }
+    if (h_p >= 4 && h_p < 5) { r = x; g = 0; b = c }
+    if (h_p >= 5 && h_p < 6) { r = c; g = 0; b = x }
+
+    var m = v - c;
+    r = (r + m) * 255;
+    g = (g + m) * 255;
+    b = (b + m) * 255;
+
+    this.r = r;
+    this.g = g;
+    this.b = b;
+    //return [r, g, b]
 
   }
 
 }
 
+
+////////////////// TEST DATA /////////////////////
 export const DATA = [
-   {
-     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-     title: "aliceblue",
-     color: [100, 100, 255],
-   },
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "aliceblue",
+    color: [100, 100, 255],
+  },
 ];
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
@@ -260,3 +262,4 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+////////////////////// END TEST DATA /////////////////////////

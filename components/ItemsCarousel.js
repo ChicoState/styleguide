@@ -8,10 +8,34 @@ import appcolors from "../config/appcolors";
 
 // Expects a list of Items formated like categories.js
 const ItemsCarousel = (categories) => {
-  console.log(categories);
+  const navigation = useNavigation();
+  // console.log(categories);
   const [activeDotIndex, setActiveDotIndex] = React.useState(0);
   const { width } = useWindowDimensions();
-  const navigation = useNavigation();
+  let palettes = require('../config/palettes.js')['palettes']; // Make Dynamic
+
+  const renderItem = ({ item, index }) => {
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('PaletteView', {
+        SelectedPalette: palettes[index]
+      })}>
+        <View style={[styles.item, { backgroundColor: appcolors.d_bottomgradient }]}>
+          <ImageBackground source={item.image} style={styles.itemImage}>
+            <View style={styles.itemHeader}>
+              <Text style={styles.headerText}>{item.name}</Text>
+              <TouchableOpacity>
+                <Ionicons name={item.isLiked ? "heart" : "heart-outline"} size={24} color="white" />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.itemFooter}>
+            </View>
+            <Text style={styles.description}>{item.description}</Text>
+          </ImageBackground>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Carousel
@@ -28,25 +52,6 @@ const ItemsCarousel = (categories) => {
   );
 };
 
-const renderItem = ({ item, index }) => {
-  return (
-    <TouchableOpacity onPress={() => navigation.navigate('PaletteView')}>
-      <View style={[styles.item, { backgroundColor: appcolors.d_bottomgradient }]}>
-        <ImageBackground source={item.image} style={styles.itemImage}>
-          <View style={styles.itemHeader}>
-            <Text style={styles.headerText}>{item.name}</Text>
-            <TouchableOpacity>
-              <Ionicons name={item.isLiked ? "heart" : "heart-outline"} size={24} color="white" />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.itemFooter}>
-          </View>
-          <Text style={styles.description}>{item.description}</Text>
-        </ImageBackground>
-      </View>
-    </TouchableOpacity>
-  );
-};
 
 export default ItemsCarousel
 

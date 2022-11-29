@@ -1,4 +1,5 @@
-export default [
+// Test palettes
+export const palettes = [
   {
     id: 1,
     name: "TestPalette",
@@ -10,7 +11,7 @@ export default [
   {
     id: 2,
     name: "Giant Goldfish",
-    description: "A test palette, it looks nice.",
+    description: "Strive like a GoldFISH.",
     categoryId: 3,
     popularity: 4.5,
     colors: ['#69D2E7', '#A7DBD8', "#E0E4CC", "#F38630", "#FA6900"]
@@ -18,7 +19,7 @@ export default [
   {
     id: 3,
     name: "Castle Cake",
-    description: "A test palette, it looks nice.",
+    description: "An absolute delight!.",
     categoryId: 4,
     popularity: 4.5,
     colors: ['#FE4365', '#FC9D9A', "#F9CDAD", "#C8C8A9", "#83AF9B"]
@@ -26,7 +27,7 @@ export default [
   {
     id: 4,
     name: "Castle Twinkle",
-    description: "A test palette, it looks nice.",
+    description: "These palettes are from another castle.",
     categoryId: 4,
     popularity: 4.5,
     colors: ['#F75D76', '#747FD9', "#FB3B95", "#536C8D", "#FBE1D0"]
@@ -34,7 +35,7 @@ export default [
   {
     id: 5,
     name: "Terra Incognita",
-    description: "A test palette, it looks nice.",
+    description: "Earthy radience.",
     categoryId: 2,
     popularity: 4.5,
     colors: ['#E8DDCB', '#CDB380', "#036564", "#033649", "#031634"]
