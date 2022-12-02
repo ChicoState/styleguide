@@ -10,8 +10,9 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^0.17.0",
-    "@react-navigation/bottom-tabs": "^6.4.0",
-    "@react-navigation/native": "^6.5.0",
+    "@react-navigation/bottom-tabs": "^6.4.3",
+    "@react-navigation/native": "^6.0.16",
+    "@react-navigation/native-stack": "^6.9.4",
     "eas-cli": "^2.1.0",
     "expo": "~46.0.16",
     "expo-camera": "~12.3.0",
