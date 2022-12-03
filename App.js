@@ -16,6 +16,38 @@ import PaletteView from './components/PaletteView';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
+function Popviewstacknav() {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="PopularPalette" component={PopularPaletteView} />
+      <Stack.Screen name="PaletteView" component={PaletteView} />
+    </Stack.Navigator>
+  );
+}
+
+function CameraViewStackNav() {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Cameranav" component={CameraView} />
+      <Stack.Screen name="Recommendations" component={RecommendationView} />
+      <Stack.Screen name="PaletteView" component={PaletteView} />
+    </Stack.Navigator>
+  );
+}
+
+function ColorPickStackNav() {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="ColorPicknav" component={ColorPickerView} />
+      <Stack.Screen name="Recommendations" component={RecommendationView} />
+      <Stack.Screen name="PaletteView" component={PaletteView} />
+    </Stack.Navigator>
+  );
+}
+
 const App = () => {
   return (
     <NavigationContainer>
@@ -36,25 +68,22 @@ const App = () => {
             } else if (route.name === 'Recommendations') {
               iconName = focused ? 'contrast' : 'contrast-outline';
             }
-
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: appcolors.primary,
           tabBarInactiveTintColor: 'gray',
+          headerShown: false,
         })}
       >
         <Tab.Screen name="Home" component={MainView} />
-        <Tab.Screen name="Popular" component={PopularPaletteView} />
-        <Tab.Screen name="Camera" component={CameraView} />
-        <Tab.Screen name="ColorPick" component={ColorPickerView} />
-        <Tab.Screen name="Recommendations" component={RecommendationView} />
-        <Tab.Screen name="PaletteView" component={PaletteView} />
+        <Tab.Screen name="Popular" component={Popviewstacknav} />
+        <Tab.Screen name="Camera" component={CameraViewStackNav} />
+        <Tab.Screen name="ColorPick" component={ColorPickStackNav} />
+        {/* <Tab.Screen name="Recommendations" component={RecommendationView} /> */}
+        {/* <Tab.Screen name="PaletteView" component={PaletteView} /> */}
+
       </Tab.Navigator>
-      <Stack.Navigator>
-        <Stack.Screen name="Recommendations" component={RecommendationView} />
-        <Stack.Screen name="PaletteView" component={PaletteView} />
-      </Stack.Navigator>
     </NavigationContainer >
   )
 }

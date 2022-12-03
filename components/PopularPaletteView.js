@@ -13,6 +13,7 @@ export default function PopularPaletteView({ route }) {
   console.log(route);
   let categories = require('../config/categories.js'); // Make Dynamic
   console.log(categories);
+
   return (
     <SafeAreaView style={styles.container}>
       <ItemsCarousel categories={categories.categories} />
@@ -23,7 +24,6 @@ export default function PopularPaletteView({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
     backgroundColor: appcolors.d_background
   },
   item: {
