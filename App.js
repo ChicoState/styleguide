@@ -33,7 +33,7 @@ function CameraViewStackNav() {
       screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Cameranav" component={CameraView} />
       <Stack.Screen name="Recommendations" component={RecommendationView} />
-      <Stack.Screen name="PaletteSelection" component={PaletteSelectionView} />
+      <Stack.Screen name="PaletteSelectionView" component={PaletteSelectionView} />
       <Stack.Screen name="PaletteView" component={PaletteView} />
     </Stack.Navigator>
   );
@@ -44,8 +44,7 @@ function ColorPickStackNav() {
     <Stack.Navigator
       screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ColorPicknav" component={ColorPickerView} />
-      <Stack.Screen name="Recommendations" component={RecommendationView} />
-      <Stack.Screen name="PaletteSelection" component={PaletteSelectionView} />
+      <Stack.Screen name="PaletteSelectionView" component={PaletteSelectionView} />
       <Stack.Screen name="PaletteView" component={PaletteView} />
     </Stack.Navigator>
   );

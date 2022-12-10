@@ -125,9 +125,10 @@ export default function CameraView({ navigation }) {
             console.log("hex: " + hex);
             setSelectedPixel(hex);
             console.log("selected_pixel: " + selected_pixel);
-            navigation.navigate('Recommendations', {
-              SelectedColor: toHsv(hex)
-            })
+
+            let sg1 = SGCFromRGB(r, g, b)
+            let possible_palettes = GenerateCustomPaletteSpreadFromSGCol(sg1);
+            navigation.navigate('PaletteSelectionView', { palette_list: possible_palettes })
           }
         }).catch((err) => {
           console.log(err);
