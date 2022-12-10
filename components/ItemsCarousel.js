@@ -16,9 +16,11 @@ const ItemsCarousel = (categories) => {
 
   const renderItem = ({ item, index }) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('PaletteView', {
-        SelectedPalette: palettes[index]
-      })}>
+      <TouchableOpacity onPress={() => {
+        let possible_palettes = palettes.filter(c => c.categoryId == activeDotIndex)
+        console.log(possible_palettes);
+        navigation.navigate('PaletteSelectionView', { palette_list: possible_palettes })
+      }}>
         <View style={[styles.item, { backgroundColor: appcolors.d_bottomgradient }]}>
           <ImageBackground source={item.image} style={styles.itemImage}>
             <View style={styles.itemHeader}>

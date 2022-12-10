@@ -1,4 +1,3 @@
-// TODO: Stack navigation for screns not meant to be visible.
 import * as React from 'react';
 import { Button, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,6 +11,7 @@ import ColorPickerView from './components/ColorPickerView';
 import appcolors from './config/appcolors';
 import PopularPaletteView from './components/PopularPaletteView';
 import PaletteView from './components/PaletteView';
+import PaletteSelectionView from './components/PaletteSelectionView';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -21,6 +21,7 @@ function Popviewstacknav() {
     <Stack.Navigator
       screenOptions={{ headerShown: false }}>
       <Stack.Screen name="PopularPalette" component={PopularPaletteView} />
+      <Stack.Screen name="PaletteSelectionView" component={PaletteSelectionView} />
       <Stack.Screen name="PaletteView" component={PaletteView} />
     </Stack.Navigator>
   );
@@ -32,6 +33,7 @@ function CameraViewStackNav() {
       screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Cameranav" component={CameraView} />
       <Stack.Screen name="Recommendations" component={RecommendationView} />
+      <Stack.Screen name="PaletteSelection" component={PaletteSelectionView} />
       <Stack.Screen name="PaletteView" component={PaletteView} />
     </Stack.Navigator>
   );
@@ -43,6 +45,7 @@ function ColorPickStackNav() {
       screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ColorPicknav" component={ColorPickerView} />
       <Stack.Screen name="Recommendations" component={RecommendationView} />
+      <Stack.Screen name="PaletteSelection" component={PaletteSelectionView} />
       <Stack.Screen name="PaletteView" component={PaletteView} />
     </Stack.Navigator>
   );
@@ -80,8 +83,6 @@ const App = () => {
         <Tab.Screen name="Popular" component={Popviewstacknav} />
         <Tab.Screen name="Camera" component={CameraViewStackNav} />
         <Tab.Screen name="ColorPick" component={ColorPickStackNav} />
-        {/* <Tab.Screen name="Recommendations" component={RecommendationView} /> */}
-        {/* <Tab.Screen name="PaletteView" component={PaletteView} /> */}
 
       </Tab.Navigator>
     </NavigationContainer >
