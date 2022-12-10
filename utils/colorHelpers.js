@@ -15,6 +15,40 @@ import {
 } from 'react-native';
 import { Appearance } from 'react-native';
 
+
+export function GenerateCustomPaletteSpreadFromSGCol(main_col) {
+  let compcol = [main_col.HEX()].concat(main_col.ComplementaryColor().map(c => c.HEX()));
+  let complement = {
+    id: 1,
+    name: "Complementary Colors",
+    description: "Complementary colors, contrast is key",
+    colors: compcol
+  };
+  let monocol = [main_col.HEX()].concat(main_col.MonoColors().map(c => c.HEX()));
+  let mono = {
+    id: 1,
+    name: "Monotone Colors",
+    description: "Monotone colors, A pretty safe bet",
+    colors: monocol
+  };
+  let triadcol = [main_col.HEX()].concat(main_col.TriadColors().map(c => c.HEX()));;
+  let triad = {
+    id: 1,
+    name: "Triadic Colors",
+    description: "Triadic colors, A unique contrast",
+    colors: triadcol
+  };
+  let squarcol = [main_col.HEX()].concat(main_col.SquareColors().map(c => c.HEX()));;
+  let square = {
+    id: 1,
+    name: "Square Colors",
+    description: "Square colors, 4 points of reference to complete this style",
+    colors: squarcol
+  };
+
+  return [complement, mono, triad, square]
+}
+
 //Well for the Triad for example you could convert your color to HSV, then just +/-120 degrees on the hue to get the other two colors.
 //For your other scheme you could do the same but just +/- something small like 15 degrees.
 //The conversion to/from HSV you can perform pretty easily.
@@ -97,6 +131,7 @@ class SG_Color {
     this.rgbTohsv(this.r, this.g, this.b);
   }
 
+
   //used to update RGB values after HSV values are altered
   UpdateRGB() {
     this.hsvTorgb(this.h, this.s, this.v);
@@ -117,6 +152,15 @@ class SG_Color {
     return `hsv(${this.h}, ${this.s}, ${this.v})`;
   }
 
+  //returns the hex representation of object
+  HEX() {
+    let r = Math.round(this.r)
+    let g = Math.round(this.g)
+    let b = Math.round(this.b)
+    let hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    return hex;
+  }
+
   //returns the blue value of the object
   blue() {
     return 'blue';
@@ -124,7 +168,8 @@ class SG_Color {
 
   //color function that returns the complementary color of object
   ComplementaryColor() {
-    return `rgb(${255 - this.r}, ${255 - this.g}, ${255 - this.b})`;
+    var c1 = SGCFromRGB(255 - this.r, 255 - this.g, 255 - this.b)
+    return [c1];
   }
 
   //color function that instantiates two more objects and alters its hue value by 120 degrees in order to return proper colors
@@ -159,7 +204,7 @@ class SG_Color {
     return [c1, c2, c3];
   }
 
-    //color function that instantiates two more objects and alters its saturation value by 60 degrees in order to return proper colors
+  //color function that instantiates two more objects and alters its saturation value by 60 degrees in order to return proper colors
   MonoColors() {
     var c1 = SGCFromRGB(this.r, this.g, this.b);
     var c2 = SGCFromRGB(this.r, this.g, this.b);
@@ -256,6 +301,8 @@ class SG_Color {
   }
 }
 
+
+
 //example RGB values and name given to test code and color functions
 export const DATA = [
   {
@@ -335,3 +382,4 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+////////////////////// END TEST DATA /////////////////////////
