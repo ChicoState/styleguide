@@ -89,7 +89,7 @@ export function HSVTORGB(h, s, v) {
 }
 
 //root color class that makes member variables for RGB and HSV
-class SG_Color {
+export class SG_Color {
   constructor(red, green, blue) {
     this.r = red;
     this.g = green;
@@ -275,17 +275,13 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
 
 //chunk of code to start program and values to test color functions
 const App = () => {
-  const [selectedId, setSelectedId] = useState(null);
+  let selectedId = null;
+  function setSelectedId(id) { selectedId = id; }
   const renderItem = ({ item }) => {
-    let sg1 = new SG_Color(item.color[0], item.color[1], item.color[2]);
-    console.log(sg1.RGB());
-    console.log(sg1.HSV());
-    let [c1, c2] = sg1.MonoColors();
-    console.log(c1.HSV());
-    console.log(c2.HSV());
-    const bgColor = sg1.RGB();
-    const color = 'black';
-    const compColor = sg1.ComplementaryColor();
+    let sg1 = new SG_Color(item.color[0], item.color[1], item.color[2])
+    const bgColor = sg1.RGB()
+    const color = "black"
+    const compColor = sg1.ComplementaryColor()
 
     return (
       <>
